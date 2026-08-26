@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>KGF<span>Admin</span></h2>
+        </div>
+
+        <nav>
+            <a href="#" class="active" onclick="showSection('dashboard')">
+                Dashboard
+            </a>
+
+            <a href="#" onclick="showSection('investors')">
+                Investors
+            </a>
+
+            <a href="#" onclick="showSection('transactions')">
+                Transactions
+            </a>
+
+            <a href="#" onclick="showSection('complaints')">
+                Complaints
+            </a>
+
+            <a href="#" onclick="showSection('notifications')">
+                Notifications
+            </a>
+
+            <a href="#" onclick="showSection('settings')">
+                Settings
+            </a>
+        </nav>
+
+        <button class="logout" onclick="logout()">Logout</button>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div>
+                <h1 id="page-title">Dashboard</h1>
+                <p>Welcome back, Administrator</p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="notification-icon" onclick="showSection('notifications')">
+                    🔔
+                    <span>3</span>
+                </div>
+
+                <div class="profile">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active-section">
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div>
+                        <p>Total Investors</p>
+                        <h2>1,248</h2>
+                        <span class="positive">+12.5%</span>
+                    </div>
+                    <div class="stat-icon">👥</div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <p>Total Investment</p>
+                        <h2>NRs 8.4M</h2>
+                        <span class="positive">+8.2%</span>
+                    </div>
+                    <div class="stat-icon">💰</div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <p>Pending Requests</p>
+                        <h2>24</h2>
+                        <span class="warning">Needs attention</span>
+                    </div>
+                    <div class="stat-icon">⏳</div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <p>Open Complaints</p>
+                        <h2>8</h2>
+                        <span class="danger">3 urgent</span>
+                    </div>
+                    <div class="stat-icon">⚠️</div>
+                </div>
+
+            </div>
+
+
+            <!-- Charts -->
+            <div class="dashboard-grid">
+
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3>Investment Overview</h3>
+                        <select id="period">
+                            <option>Last 7 Months</option>
+                            <option>Last 6 Months</option>
+                            <option>Last Year</option>
+                        </select>
+                    </div>
+
+                    <canvas id="investmentChart"></canvas>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                    </div>
+
+                    <div class="activity">
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <div>
+                                <strong>New investor registered</strong>
+                                <p>Investor #INV-1024</p>
+                                <small>10 minutes ago</small>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <div>
+                                <strong>Transaction request</strong>
+                                <p>NRs 150,000 withdrawal</p>
+                                <small>25 minutes ago</small>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <div>
+                                <strong>New complaint</strong>
+                                <p>Payment verification issue</p>
+                                <small>1 hour ago</small>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <div>
+                                <strong>Investment completed</strong>
+                                <p>Investor #INV-0998</p>
+                                <small>2 hours ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Recent Transactions -->
+            <div class="card table-card">
+
+                <div class="card-header">
+                    <h3>Recent Transactions</h3>
+                    <button class="view-btn" onclick="showSection('transactions')">
+                        View All
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Investor</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>TXN-10001</td>
+                                <td>INV-1024</td>
+                                <td>Investment</td>
+                                <td>NRs 250,000</td>
+                                <td>25 Aug 2026</td>
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>TXN-10002</td>
+                                <td>INV-1018</td>
+                                <td>Withdrawal</td>
+                                <td>NRs 150,000</td>
+                                <td>25 Aug 2026</td>
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>TXN-10003</td>
+                                <td>INV-0998</td>
+                                <td>Investment</td>
+                                <td>NRs 500,000</td>
+                                <td>24 Aug 2026</td>
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Investors Section -->
+        <section id="investors" class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Investors</h2>
+                    <p>Manage registered investors</p>
+                </div>
+
+                <button class="primary-btn">
+                    + Add Investor
+                </button>
+            </div>
+
+            <div class="card">
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="investorSearch"
+                        placeholder="Search investors..."
+                        onkeyup="searchInvestors()"
+                    >
+                </div>
+
+                <div class="table-container">
+
+                    <table id="investorTable">
+
+                        <thead>
+                            <tr>
+                                <th>Investor ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Investment</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>INV-1001</td>
+                                <td>Ram Sharma</td>
+                                <td>ram@example.com</td>
+                                <td>NRs 500,000</td>
+                                <td>
+                                    <span class="status active">
+                                        Active
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="action-btn">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>INV-1002</td>
+                                <td>Sita Thapa</td>
+                                <td>sita@example.com</td>
+                                <td>NRs 350,000</td>
+                                <td>
+                                    <span class="status active">
+                                        Active
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="action-btn">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>INV-1003</td>
+                                <td>Hari KC</td>
+                                <td>hari@example.com</td>
+                                <td>NRs 200,000</td>
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="action-btn">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Transactions -->
+        <section id="transactions" class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Transaction Requests</h2>
+                    <p>Review and manage transaction requests</p>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Investor ID</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>REQ-001</td>
+                                <td>INV-1003</td>
+                                <td>Withdrawal</td>
+                                <td>NRs 100,000</td>
+                                <td>25 Aug 2026</td>
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="approve-btn"
+                                        onclick="approveRequest(this)">
+                                        Approve
+                                    </button>
+
+                                    <button class="reject-btn"
+                                        onclick="rejectRequest(this)">
+                                        Reject
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>REQ-002</td>
+                                <td>INV-1008</td>
+                                <td>Investment</td>
+                                <td>NRs 300,000</td>
+                                <td>25 Aug 2026</td>
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="approve-btn"
+                                        onclick="approveRequest(this)">
+                                        Approve
+                                    </button>
+
+                                    <button class="reject-btn"
+                                        onclick="rejectRequest(this)">
+                                        Reject
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Complaints -->
+        <section id="complaints" class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Complaints & Queries</h2>
+                    <p>Manage investor complaints and support requests</p>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="complaint">
+                    <div>
+                        <strong>COMP-001</strong>
+                        <h4>Payment verification issue</h4>
+                        <p>Investor: INV-1004</p>
+                    </div>
+
+                    <span class="status pending">
+                        Open
+                    </span>
+
+                    <button class="action-btn">
+                        View
+                    </button>
+                </div>
+
+                <div class="complaint">
+                    <div>
+                        <strong>COMP-002</strong>
+                        <h4>Withdrawal delay</h4>
+                        <p>Investor: INV-1012</p>
+                    </div>
+
+                    <span class="status pending">
+                        Open
+                    </span>
+
+                    <button class="action-btn">
+                        View
+                    </button>
+                </div>
+
+                <div class="complaint">
+                    <div>
+                        <strong>COMP-003</strong>
+                        <h4>Account information update</h4>
+                        <p>Investor: INV-1018</p>
+                    </div>
+
+                    <span class="status completed">
+                        Resolved
+                    </span>
+
+                    <button class="action-btn">
+                        View
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Notifications -->
+        <section id="notifications" class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Notifications</h2>
+                    <p>System notifications and alerts</p>
+                </div>
+            </div>
+
+            <div class="card notification-list">
+
+                <div class="notification">
+                    <span>🔔</span>
+                    <div>
+                        <strong>New transaction request</strong>
+                        <p>INV-1003 submitted a withdrawal request.</p>
+                        <small>10 minutes ago</small>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <span>⚠️</span>
+                    <div>
+                        <strong>New complaint received</strong>
+                        <p>A new complaint requires administrator attention.</p>
+                        <small>1 hour ago</small>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <span>👤</span>
+                    <div>
+                        <strong>New investor registration</strong>
+                        <p>INV-1024 has registered successfully.</p>
+                        <small>2 hours ago</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Settings -->
+        <section id="settings" class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Manage administrator settings</p>
+                </div>
+            </div>
+
+            <div class="card settings-card">
+
+                <label>Administrator Name</label>
+                <input type="text" value="Admin">
+
+                <label>Email</label>
+                <input type="email" value="admin@example.com">
+
+                <label>Change Password</label>
+                <input type="password" placeholder="New password">
+
+                <button class="primary-btn">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
