@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGF Admin - Complaints</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">KGF<span>Admin</span></div>
+
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="complaints.html" class="active">Complaints</a></li>
+        <li><a href="messages.html">Messages</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="settings.html">Settings</a></li>
+    </ul>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+        <h1>Complaints & Queries</h1>
+
+        <div class="admin-profile">
+            🔔 Administrator
+        </div>
+    </div>
+
+    <div class="page-actions">
+
+        <input
+            type="text"
+            id="complaintSearch"
+            placeholder="Search complaints..."
+            onkeyup="searchComplaints()"
+        >
+
+    </div>
+
+    <div class="complaints-container" id="complaintContainer">
+
+        <div class="complaint-card">
+
+            <div>
+                <h3>COMP-001</h3>
+                <p><strong>Issue:</strong> Payment verification issue</p>
+                <p><strong>Investor:</strong> INV-1004</p>
+                <p><strong>Date:</strong> 25 Aug 2026</p>
+            </div>
+
+            <div>
+                <span class="status pending">Open</span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewComplaint('COMP-001')">
+                    View
+                </button>
+            </div>
+
+        </div>
+
+        <div class="complaint-card">
+
+            <div>
+                <h3>COMP-002</h3>
+                <p><strong>Issue:</strong> Withdrawal delay</p>
+                <p><strong>Investor:</strong> INV-1012</p>
+                <p><strong>Date:</strong> 25 Aug 2026</p>
+            </div>
+
+            <div>
+                <span class="status pending">Open</span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewComplaint('COMP-002')">
+                    View
+                </button>
+            </div>
+
+        </div>
+
+        <div class="complaint-card">
+
+            <div>
+                <h3>COMP-003</h3>
+                <p><strong>Issue:</strong> Account information update</p>
+                <p><strong>Investor:</strong> INV-1018</p>
+                <p><strong>Date:</strong> 24 Aug 2026</p>
+            </div>
+
+            <div>
+                <span class="status completed">Resolved</span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewComplaint('COMP-003')">
+                    View
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

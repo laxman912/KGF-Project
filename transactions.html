@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGF Admin - Transactions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">KGF<span>Admin</span></div>
+
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="transactions.html" class="active">Transactions</a></li>
+        <li><a href="complaints.html">Complaints</a></li>
+        <li><a href="messages.html">Messages</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="settings.html">Settings</a></li>
+    </ul>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+        <h1>Transaction Requests</h1>
+
+        <div class="admin-profile">
+            🔔 Administrator
+        </div>
+    </div>
+
+    <div class="content-card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Investor ID</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>REQ-001</td>
+                    <td>INV-1003</td>
+                    <td>Withdrawal</td>
+                    <td>NRs 100,000</td>
+                    <td>25 Aug 2026</td>
+
+                    <td>
+                        <span class="status pending">
+                            Pending
+                        </span>
+                    </td>
+
+                    <td>
+                        <button
+                            class="approve-btn"
+                            onclick="approveRequest(this)">
+                            Approve
+                        </button>
+
+                        <button
+                            class="reject-btn"
+                            onclick="rejectRequest(this)">
+                            Reject
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>REQ-002</td>
+                    <td>INV-1008</td>
+                    <td>Investment</td>
+                    <td>NRs 300,000</td>
+                    <td>25 Aug 2026</td>
+
+                    <td>
+                        <span class="status pending">
+                            Pending
+                        </span>
+                    </td>
+
+                    <td>
+                        <button
+                            class="approve-btn"
+                            onclick="approveRequest(this)">
+                            Approve
+                        </button>
+
+                        <button
+                            class="reject-btn"
+                            onclick="rejectRequest(this)">
+                            Reject
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

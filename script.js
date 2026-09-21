@@ -1,64 +1,83 @@
-// ===============================
-// Section Navigation
-// ===============================
+/* LOGOUT */
 
-function showSection(sectionId) {
+function logout() {
 
-    const sections = document.querySelectorAll(".section");
+    let confirmLogout = confirm(
+        "Are you sure you want to logout?"
+    );
 
-    sections.forEach(section => {
-        section.classList.remove("active-section");
-    });
-
-    document.getElementById(sectionId).classList.add("active-section");
-
-    const titles = {
-        dashboard: "Dashboard",
-        investors: "Investors",
-        transactions: "Transactions",
-        complaints: "Complaints & Queries",
-        notifications: "Notifications",
-        settings: "Settings"
-    };
-
-    document.getElementById("page-title").textContent =
-        titles[sectionId];
-
-    // Update active sidebar link
-    const links = document.querySelectorAll(".sidebar nav a");
-
-    links.forEach(link => {
-        link.classList.remove("active");
-    });
-
-    event.target.classList.add("active");
+    if (confirmLogout) {
+        window.location.href = "login.html";
+    }
 }
 
 
-// ===============================
-// Investor Search
-// ===============================
+/* APPROVE TRANSACTION */
 
-function searchInvestors() {
+function approveRequest(button) {
 
-    const input =
-        document.getElementById("investorSearch");
+    let row = button.closest("tr");
 
-    const filter =
-        input.value.toLowerCase();
+    let status = row.querySelector(".status");
 
-    const table =
-        document.getElementById("investorTable");
+    status.textContent = "Approved";
+    status.className = "status completed";
 
-    const rows =
-        table.getElementsByTagName("tr");
+    button.disabled = true;
+
+    let rejectButton = row.querySelector(".reject-btn");
+
+    if (rejectButton) {
+        rejectButton.disabled = true;
+    }
+
+    alert("Transaction approved successfully.");
+}
+
+
+/* REJECT TRANSACTION */
+
+function rejectRequest(button) {
+
+    let row = button.closest("tr");
+
+    let status = row.querySelector(".status");
+
+    status.textContent = "Rejected";
+    status.className = "status rejected";
+
+    button.disabled = true;
+
+    let approveButton = row.querySelector(".approve-btn");
+
+    if (approveButton) {
+        approveButton.disabled = true;
+    }
+
+    alert("Transaction rejected.");
+}
+
+
+/* SEARCH TABLE */
+
+function searchTable(inputId, tableId) {
+
+    let input = document.getElementById(inputId);
+
+    let filter = input.value.toLowerCase();
+
+    let table = document.getElementById(tableId);
+
+    let rows = table
+        .getElementsByTagName("tr");
 
     for (let i = 1; i < rows.length; i++) {
 
-        const rowText =
-            rows[i].textContent.toLowerCase();
+        let text = rows[i]
+            .textContent
+            .toLowerCase();
 
-        if (rowText.includes(filter)) {
+        if (text.includes(filter)) {
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";
@@ -67,259 +86,175 @@ function searchInvestors() {
 }
 
 
-// ===============================
-// Approve Transaction
-// ===============================
+/* SEARCH COMPLAINTS */
 
-function approveRequest(button) {
+function searchComplaints() {
 
-    const row = button.closest("tr");
+    let input =
+        document.getElementById("complaintSearch");
 
-    const status = row.querySelector(".status");
+    let filter =
+        input.value.toLowerCase();
 
-    const confirmed =
-        confirm("Are you sure you want to approve this request?");
+    let cards =
+        document.querySelectorAll(".complaint-card");
 
-    if (confirmed) {
+    cards.forEach(function(card) {
 
-        status.textContent = "Approved";
+        let text =
+            card.textContent.toLowerCase();
 
-        status.className =
-            "status completed";
+        if (text.includes(filter)) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
 
-        button.remove();
-
-        alert("Transaction request approved.");
-    }
+    });
 }
 
 
-// ===============================
-// Reject Transaction
-// ===============================
+/* VIEW INVESTOR */
 
-function rejectRequest(button) {
+function viewInvestor(id) {
 
-    const row = button.closest("tr");
-
-    const status = row.querySelector(".status");
-
-    const confirmed =
-        confirm("Are you sure you want to reject this request?");
-
-    if (confirmed) {
-
-        status.textContent = "Rejected";
-
-        status.className =
-            "status";
-
-        status.style.background = "#fee2e2";
-        status.style.color = "#dc2626";
-
-        button.remove();
-
-        alert("Transaction request rejected.");
-    }
+    alert(
+        "Investor ID: " + id +
+        "\nStatus: Active"
+    );
 }
 
 
-// ===============================
-// Logout
-// ===============================
+/* ADD INVESTOR */
 
-function logout() {
+function addInvestor() {
 
-    const confirmed =
-        confirm("Are you sure you want to logout?");
-
-    if (confirmed) {
-
-        alert("You have been logged out.");
-
-        // Later this can redirect to login page
-        // window.location.href = "login.html";
-    }
-}
-
-
-// ===============================
-// Investment Chart
-// ===============================
-
-const canvas =
-    document.getElementById("investmentChart");
-
-const ctx =
-    canvas.getContext("2d");
-
-const data = [
-    250000,
-    380000,
-    300000,
-    520000,
-    450000,
-    650000,
-    800000
-];
-
-const labels = [
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug"
-];
-
-function drawChart() {
-
-    const width = canvas.width =
-        canvas.offsetWidth * 2;
-
-    const height = canvas.height =
-        canvas.offsetHeight * 2;
-
-    ctx.scale(2, 2);
-
-    const chartWidth =
-        canvas.offsetWidth;
-
-    const chartHeight =
-        canvas.offsetHeight;
-
-    const padding = 40;
-
-    const maxValue =
-        Math.max(...data);
-
-    // Clear canvas
-    ctx.clearRect(
-        0,
-        0,
-        chartWidth,
-        chartHeight
+    let name = prompt(
+        "Enter investor name:"
     );
 
-
-    // Grid lines
-
-    ctx.strokeStyle = "#e5e7eb";
-    ctx.lineWidth = 1;
-
-    for (let i = 0; i <= 4; i++) {
-
-        const y =
-            padding +
-            ((chartHeight - padding * 2) / 4) * i;
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            padding,
-            y
-        );
-
-        ctx.lineTo(
-            chartWidth - padding,
-            y
-        );
-
-        ctx.stroke();
+    if (!name) {
+        return;
     }
 
+    let email = prompt(
+        "Enter investor email:"
+    );
 
-    // Chart line
+    if (!email) {
+        return;
+    }
 
-    ctx.beginPath();
-
-    data.forEach((value, index) => {
-
-        const x =
-            padding +
-            index *
-            ((chartWidth - padding * 2) /
-            (data.length - 1));
-
-        const y =
-            chartHeight -
-            padding -
-            (value / maxValue) *
-            (chartHeight - padding * 2);
-
-        if (index === 0) {
-            ctx.moveTo(x, y);
-        } else {
-            ctx.lineTo(x, y);
-        }
-    });
-
-    ctx.strokeStyle = "#2563eb";
-    ctx.lineWidth = 3;
-    ctx.stroke();
-
-
-    // Data points
-
-    data.forEach((value, index) => {
-
-        const x =
-            padding +
-            index *
-            ((chartWidth - padding * 2) /
-            (data.length - 1));
-
-        const y =
-            chartHeight -
-            padding -
-            (value / maxValue) *
-            (chartHeight - padding * 2);
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x,
-            y,
-            5,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle = "#2563eb";
-
-        ctx.fill();
-    });
-
-
-    // Labels
-
-    ctx.fillStyle = "#6b7280";
-    ctx.font = "12px Arial";
-    ctx.textAlign = "center";
-
-    labels.forEach((label, index) => {
-
-        const x =
-            padding +
-            index *
-            ((chartWidth - padding * 2) /
-            (labels.length - 1));
-
-        ctx.fillText(
-            label,
-            x,
-            chartHeight - 15
-        );
-    });
+    alert(
+        "Investor added successfully!\n\n" +
+        "Name: " + name +
+        "\nEmail: " + email
+    );
 }
 
-drawChart();
+
+/* VIEW COMPLAINT */
+
+function viewComplaint(id) {
+
+    window.location.href =
+        "messages.html?complaint=" + id;
+}
 
 
-// Redraw chart when browser size changes
+/* MARK NOTIFICATIONS AS READ */
 
-window.addEventListener(
-    "resize",
-    drawChart
+function markNotificationsRead() {
+
+    let notifications =
+        document.querySelectorAll(
+            ".notification-item"
+        );
+
+    notifications.forEach(function(item) {
+
+        item.style.opacity = "0.5";
+
+    });
+
+    alert(
+        "All notifications marked as read."
+    );
+}
+
+
+/* SAVE SETTINGS */
+
+function saveSettings() {
+
+    let name =
+        document.getElementById("adminName").value;
+
+    let email =
+        document.getElementById("adminEmail").value;
+
+    let password =
+        document.getElementById("newPassword").value;
+
+    let confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+
+        alert(
+            "Passwords do not match."
+        );
+
+        return;
+    }
+
+    alert(
+        "Settings saved successfully!"
+    );
+}
+
+
+/* MESSAGE FILTER FROM COMPLAINT */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        let params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        let complaintId =
+            params.get("complaint");
+
+        if (!complaintId) {
+            return;
+        }
+
+        let table =
+            document.getElementById("messageTable");
+
+        if (!table) {
+            return;
+        }
+
+        let rows =
+            table.querySelectorAll("tbody tr");
+
+        rows.forEach(function(row) {
+
+            let complaintCell =
+                row.cells[1];
+
+            if (
+                complaintCell.textContent.trim()
+                !== complaintId
+            ) {
+                row.style.display = "none";
+            }
+
+        });
+
+    }
 );

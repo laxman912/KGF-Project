@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGF Admin - Messages</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">KGF<span>Admin</span></div>
+
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="complaints.html">Complaints</a></li>
+        <li><a href="messages.html" class="active">Messages</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="settings.html">Settings</a></li>
+    </ul>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+        <h1>Message History</h1>
+
+        <div class="admin-profile">
+            🔔 Administrator
+        </div>
+    </div>
+
+    <div class="page-actions">
+
+        <input
+            type="text"
+            id="messageSearch"
+            placeholder="Search messages..."
+            onkeyup="searchTable('messageSearch', 'messageTable')"
+        >
+
+    </div>
+
+    <div class="content-card">
+
+        <table id="messageTable">
+
+            <thead>
+                <tr>
+                    <th>Message ID</th>
+                    <th>Complaint ID</th>
+                    <th>Sender</th>
+                    <th>Role</th>
+                    <th>Message</th>
+                    <th>Date / Time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>MSG-001</td>
+                    <td>COMP-001</td>
+                    <td>Ram Sharma</td>
+                    <td>Investor</td>
+                    <td>Payment has not been verified.</td>
+                    <td>25 Aug 2026 10:30 AM</td>
+                </tr>
+
+                <tr>
+                    <td>MSG-002</td>
+                    <td>COMP-001</td>
+                    <td>Admin</td>
+                    <td>Administrator</td>
+                    <td>We are checking your payment.</td>
+                    <td>25 Aug 2026 11:00 AM</td>
+                </tr>
+
+                <tr>
+                    <td>MSG-003</td>
+                    <td>COMP-002</td>
+                    <td>Sita Thapa</td>
+                    <td>Investor</td>
+                    <td>My withdrawal is still pending.</td>
+                    <td>25 Aug 2026 12:15 PM</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

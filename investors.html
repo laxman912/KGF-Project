@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGF Admin - Investors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">KGF<span>Admin</span></div>
+
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="investors.html" class="active">Investors</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="complaints.html">Complaints</a></li>
+        <li><a href="messages.html">Messages</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="settings.html">Settings</a></li>
+    </ul>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+        <h1>Investors</h1>
+
+        <div class="admin-profile">
+            🔔 Administrator
+        </div>
+    </div>
+
+    <div class="page-actions">
+
+        <input
+            type="text"
+            id="investorSearch"
+            placeholder="Search investors..."
+            onkeyup="searchTable('investorSearch', 'investorTable')"
+        >
+
+        <button class="primary-btn" onclick="addInvestor()">
+            + Add Investor
+        </button>
+
+    </div>
+
+    <div class="content-card">
+
+        <table id="investorTable">
+
+            <thead>
+                <tr>
+                    <th>Investor ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Investment</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>INV-1001</td>
+                    <td>Ram Sharma</td>
+                    <td>ram@example.com</td>
+                    <td>NRs 500,000</td>
+                    <td>
+                        <span class="status completed">Active</span>
+                    </td>
+                    <td>
+                        <button class="view-btn"
+                            onclick="viewInvestor('INV-1001')">
+                            View
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>INV-1002</td>
+                    <td>Sita Thapa</td>
+                    <td>sita@example.com</td>
+                    <td>NRs 350,000</td>
+                    <td>
+                        <span class="status completed">Active</span>
+                    </td>
+                    <td>
+                        <button class="view-btn"
+                            onclick="viewInvestor('INV-1002')">
+                            View
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>INV-1003</td>
+                    <td>Hari KC</td>
+                    <td>hari@example.com</td>
+                    <td>NRs 200,000</td>
+                    <td>
+                        <span class="status pending">Pending</span>
+                    </td>
+                    <td>
+                        <button class="view-btn"
+                            onclick="viewInvestor('INV-1003')">
+                            View
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
