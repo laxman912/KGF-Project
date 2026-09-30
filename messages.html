@@ -30,77 +30,81 @@
 <div class="main-content">
 
     <div class="topbar">
-        <h1>Message History</h1>
+        <h1>Message Inbox</h1>
 
         <div class="admin-profile">
             🔔 Administrator
         </div>
     </div>
 
-    <div class="page-actions">
+    <div class="inbox">
 
-        <input
-            type="text"
-            id="messageSearch"
-            placeholder="Search messages..."
-            onkeyup="searchTable('messageSearch', 'messageTable')"
-        >
+        <div class="inbox-panel">
 
-    </div>
+            <div class="inbox-panel-header">
+                <h2>Conversations</h2>
+                <span class="result-count" id="conversationCount">0</span>
+            </div>
 
-    <div class="content-card">
+            <div class="inbox-search">
+                <input
+                    type="text"
+                    id="messageSearch"
+                    placeholder="Search conversations..."
+                    onkeyup="renderConversations()"
+                >
+            </div>
 
-        <table id="messageTable">
+            <div class="conversation-list" id="conversationList"></div>
 
-            <thead>
-                <tr>
-                    <th>Message ID</th>
-                    <th>Complaint ID</th>
-                    <th>Sender</th>
-                    <th>Role</th>
-                    <th>Message</th>
-                    <th>Date / Time</th>
-                </tr>
-            </thead>
+        </div>
 
-            <tbody>
+        <div class="inbox-panel thread-panel">
 
-                <tr>
-                    <td>MSG-001</td>
-                    <td>COMP-001</td>
-                    <td>Ram Sharma</td>
-                    <td>Investor</td>
-                    <td>Payment has not been verified.</td>
-                    <td>25 Aug 2026 10:30 AM</td>
-                </tr>
+            <div class="thread-header" id="threadHeader">
 
-                <tr>
-                    <td>MSG-002</td>
-                    <td>COMP-001</td>
-                    <td>Admin</td>
-                    <td>Administrator</td>
-                    <td>We are checking your payment.</td>
-                    <td>25 Aug 2026 11:00 AM</td>
-                </tr>
+                <h2>Select a conversation</h2>
+                <p>Choose a complaint thread from the list to read and reply.</p>
 
-                <tr>
-                    <td>MSG-003</td>
-                    <td>COMP-002</td>
-                    <td>Sita Thapa</td>
-                    <td>Investor</td>
-                    <td>My withdrawal is still pending.</td>
-                    <td>25 Aug 2026 12:15 PM</td>
-                </tr>
+            </div>
 
-            </tbody>
+            <div class="thread-messages" id="threadMessages"></div>
 
-        </table>
+            <div class="composer">
+
+                <textarea
+                    id="replyText"
+                    placeholder="Write a reply to the investor..."
+                ></textarea>
+
+                <div class="composer-actions">
+
+                    <span class="composer-hint">Replies are sent as Administrator</span>
+
+                    <button
+                        class="primary-btn"
+                        onclick="sendReply()"
+                    >
+                        Send Reply
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
-<script src="script.js"></script>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/investors.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/complaints.js"></script>
+<script src="js/messages.js"></script>
 
 </body>
 </html>

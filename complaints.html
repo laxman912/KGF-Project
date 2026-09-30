@@ -37,87 +37,109 @@
         </div>
     </div>
 
+    <div class="stats-grid summary-grid">
+
+        <div class="stat-card">
+            <h3>Open</h3>
+            <p id="statOpen">0</p>
+            <span>Needs first response</span>
+        </div>
+
+        <div class="stat-card">
+            <h3>In Progress</h3>
+            <p id="statProgress">0</p>
+            <span>Being handled by admin</span>
+        </div>
+
+        <div class="stat-card">
+            <h3>Resolved</h3>
+            <p id="statResolved">0</p>
+            <span>Closed this period</span>
+        </div>
+
+    </div>
+
     <div class="page-actions">
 
         <input
             type="text"
             id="complaintSearch"
-            placeholder="Search complaints..."
-            onkeyup="searchComplaints()"
+            placeholder="Search by issue, investor or ID..."
+            onkeyup="renderComplaints()"
         >
+
+        <select
+            class="filter-select"
+            id="complaintCategory"
+            onchange="renderComplaints()"
+        >
+            <option value="All">All Categories</option>
+        </select>
 
     </div>
 
-    <div class="complaints-container" id="complaintContainer">
+    <div class="filter-bar" id="complaintFilters">
 
-        <div class="complaint-card">
+        <button
+            class="filter-chip active"
+            data-status="All"
+            onclick="setComplaintFilter('All')"
+        >
+            All <span class="chip-count" id="chipAll">0</span>
+        </button>
 
-            <div>
-                <h3>COMP-001</h3>
-                <p><strong>Issue:</strong> Payment verification issue</p>
-                <p><strong>Investor:</strong> INV-1004</p>
-                <p><strong>Date:</strong> 25 Aug 2026</p>
-            </div>
+        <button
+            class="filter-chip"
+            data-status="Open"
+            onclick="setComplaintFilter('Open')"
+        >
+            Open <span class="chip-count" id="chipOpen">0</span>
+        </button>
 
-            <div>
-                <span class="status pending">Open</span>
+        <button
+            class="filter-chip"
+            data-status="In Progress"
+            onclick="setComplaintFilter('In Progress')"
+        >
+            In Progress <span class="chip-count" id="chipProgress">0</span>
+        </button>
 
-                <button
-                    class="view-btn"
-                    onclick="viewComplaint('COMP-001')">
-                    View
-                </button>
-            </div>
+        <button
+            class="filter-chip"
+            data-status="Resolved"
+            onclick="setComplaintFilter('Resolved')"
+        >
+            Resolved <span class="chip-count" id="chipResolved">0</span>
+        </button>
 
+    </div>
+
+    <div class="content-card">
+
+        <div class="card-header">
+            <h2>All Complaints</h2>
+            <span class="result-count" id="complaintCount">0 complaints</span>
         </div>
 
-        <div class="complaint-card">
+        <div class="complaints-container" id="complaintContainer"></div>
 
-            <div>
-                <h3>COMP-002</h3>
-                <p><strong>Issue:</strong> Withdrawal delay</p>
-                <p><strong>Investor:</strong> INV-1012</p>
-                <p><strong>Date:</strong> 25 Aug 2026</p>
-            </div>
-
-            <div>
-                <span class="status pending">Open</span>
-
-                <button
-                    class="view-btn"
-                    onclick="viewComplaint('COMP-002')">
-                    View
-                </button>
-            </div>
-
-        </div>
-
-        <div class="complaint-card">
-
-            <div>
-                <h3>COMP-003</h3>
-                <p><strong>Issue:</strong> Account information update</p>
-                <p><strong>Investor:</strong> INV-1018</p>
-                <p><strong>Date:</strong> 24 Aug 2026</p>
-            </div>
-
-            <div>
-                <span class="status completed">Resolved</span>
-
-                <button
-                    class="view-btn"
-                    onclick="viewComplaint('COMP-003')">
-                    View
-                </button>
-            </div>
-
+        <div class="empty-state" id="complaintEmpty">
+            <div class="empty-icon">✓</div>
+            <h3>No complaints found</h3>
+            <p>Try a different search term or clear the filters to see every complaint.</p>
         </div>
 
     </div>
 
 </div>
 
-<script src="script.js"></script>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/investors.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/complaints.js"></script>
+<script src="js/messages.js"></script>
 
 </body>
 </html>

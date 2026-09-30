@@ -9,102 +9,6 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        /* Login page only */
-        .login-page {
-            min-height: 100vh;
-            width: 100%;
-            background: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-card {
-            width: 400px;
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .login-logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .login-logo h2 {
-            font-size: 28px;
-        }
-
-        .login-logo span {
-            color: #3b82f6;
-        }
-
-        .login-logo p {
-            color: #6b7280;
-            margin-top: 8px;
-        }
-
-        .login-card label {
-            display: block;
-            margin: 15px 0 7px;
-            font-weight: bold;
-        }
-
-        .login-card input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 7px;
-            font-size: 14px;
-        }
-
-        .login-card input:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
-
-        .login-btn {
-            width: 100%;
-            margin-top: 25px;
-            padding: 12px;
-            border: none;
-            border-radius: 7px;
-            background: #2563eb;
-            color: white;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .login-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .login-error {
-            display: none;
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 7px;
-            background: #fee2e2;
-            color: #dc2626;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .login-info {
-            margin-top: 20px;
-            text-align: center;
-            color: #6b7280;
-            font-size: 13px;
-        }
-
-        @media (max-width: 500px) {
-            .login-card {
-                width: calc(100% - 30px);
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -120,31 +24,35 @@
 
             <form id="loginForm">
 
-                <label for="username">
-                    Username
-                </label>
+                <div class="form-group">
+                    <label for="username">Username</label>
 
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter username"
-                    required
-                    autocomplete="username"
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    style="width:100%;margin-top:10px"
                 >
-
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter password"
-                    required
-                    autocomplete="current-password"
-                >
-
-                <button type="submit" class="login-btn">
                     Login
                 </button>
 
@@ -169,5 +77,4 @@
     <script src="login.js"></script>
 
 </body>
-
 </html>

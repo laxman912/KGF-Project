@@ -1,10 +1,8 @@
-// ========================================
-// KGF ADMIN LOGIN
-// ========================================
+/* LOGIN */
 
 const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
@@ -17,18 +15,16 @@ loginForm.addEventListener("submit", function (event) {
     const error =
         document.getElementById("loginError");
 
+    /* DEMO CREDENTIALS */
 
-    // Demo credentials
     const ADMIN_USERNAME = "admin";
     const ADMIN_PASSWORD = "Admin@123";
-
 
     if (
         username === ADMIN_USERNAME &&
         password === ADMIN_PASSWORD
     ) {
 
-        // Store login session
         sessionStorage.setItem(
             "adminLoggedIn",
             "true"
@@ -39,7 +35,6 @@ loginForm.addEventListener("submit", function (event) {
             username
         );
 
-        // Redirect to dashboard
         window.location.href = "index.html";
 
     } else {

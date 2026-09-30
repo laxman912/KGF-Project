@@ -30,96 +30,160 @@
 <div class="main-content">
 
     <div class="topbar">
-        <h1>Transaction Requests</h1>
+
+        <div>
+            <h1>Transaction Requests</h1>
+            <p class="topbar-subtitle">Approve, reject and track every investment request</p>
+        </div>
 
         <div class="admin-profile">
-            🔔 Administrator
+            <span class="admin-avatar">AD</span>
+            <span>Administrator</span>
         </div>
+
+    </div>
+
+    <div class="stats-grid summary-grid">
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <h3>Total Volume</h3>
+                <div class="stat-icon brand">₨</div>
+            </div>
+            <p id="statVolume">NRs 0</p>
+            <div class="stat-footer">
+                <span id="statVolumeCount">0 requests</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <h3>Pending</h3>
+                <div class="stat-icon warning">◷</div>
+            </div>
+            <p id="statPending">0</p>
+            <div class="stat-footer">
+                <span>need approval</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <h3>Approved</h3>
+                <div class="stat-icon success">✓</div>
+            </div>
+            <p id="statApproved">0</p>
+            <div class="stat-footer">
+                <span id="statApprovedValue">NRs 0</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page-actions">
+
+        <input
+            type="text"
+            id="requestSearch"
+            placeholder="Search by request ID, investor or method..."
+            onkeyup="renderRequests()"
+        >
+
+        <select
+            class="filter-select"
+            id="requestType"
+            onchange="renderRequests()"
+        >
+            <option value="All">All Types</option>
+        </select>
+
+        <button class="ghost-btn" onclick="exportRequests()">
+            Export CSV
+        </button>
+
+    </div>
+
+    <div class="filter-bar" id="requestFilters">
+
+        <button
+            class="filter-chip active"
+            data-status="All"
+            onclick="setRequestFilter('All')"
+        >
+            All <span class="chip-count" id="reqChipAll">0</span>
+        </button>
+
+        <button
+            class="filter-chip"
+            data-status="Pending"
+            onclick="setRequestFilter('Pending')"
+        >
+            Pending <span class="chip-count" id="reqChipPending">0</span>
+        </button>
+
+        <button
+            class="filter-chip"
+            data-status="Approved"
+            onclick="setRequestFilter('Approved')"
+        >
+            Approved <span class="chip-count" id="reqChipApproved">0</span>
+        </button>
+
+        <button
+            class="filter-chip"
+            data-status="Rejected"
+            onclick="setRequestFilter('Rejected')"
+        >
+            Rejected <span class="chip-count" id="reqChipRejected">0</span>
+        </button>
+
     </div>
 
     <div class="content-card">
 
-        <table>
+        <div class="card-header">
+            <h2>All Requests</h2>
+            <span class="result-count" id="requestCount">0 requests</span>
+        </div>
 
-            <thead>
-                <tr>
-                    <th>Request ID</th>
-                    <th>Investor ID</th>
-                    <th>Type</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        <div style="overflow-x:auto">
+            <table id="requestTable">
 
-            <tbody>
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Investor</th>
+                        <th>Type</th>
+                        <th class="amount">Amount</th>
+                        <th>Method</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-                <tr>
-                    <td>REQ-001</td>
-                    <td>INV-1003</td>
-                    <td>Withdrawal</td>
-                    <td>NRs 100,000</td>
-                    <td>25 Aug 2026</td>
+                <tbody id="requestBody"></tbody>
 
-                    <td>
-                        <span class="status pending">
-                            Pending
-                        </span>
-                    </td>
+            </table>
+        </div>
 
-                    <td>
-                        <button
-                            class="approve-btn"
-                            onclick="approveRequest(this)">
-                            Approve
-                        </button>
-
-                        <button
-                            class="reject-btn"
-                            onclick="rejectRequest(this)">
-                            Reject
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>REQ-002</td>
-                    <td>INV-1008</td>
-                    <td>Investment</td>
-                    <td>NRs 300,000</td>
-                    <td>25 Aug 2026</td>
-
-                    <td>
-                        <span class="status pending">
-                            Pending
-                        </span>
-                    </td>
-
-                    <td>
-                        <button
-                            class="approve-btn"
-                            onclick="approveRequest(this)">
-                            Approve
-                        </button>
-
-                        <button
-                            class="reject-btn"
-                            onclick="rejectRequest(this)">
-                            Reject
-                        </button>
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
+        <div class="empty-state" id="requestEmpty">
+            <div class="empty-icon">✓</div>
+            <h3>No requests found</h3>
+            <p>Adjust the search term or filters to see matching transaction requests.</p>
+        </div>
 
     </div>
 
 </div>
 
-<script src="script.js"></script>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/investors.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/complaints.js"></script>
+<script src="js/messages.js"></script>
 
 </body>
 </html>

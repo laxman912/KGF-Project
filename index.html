@@ -10,6 +10,7 @@
 <body>
 
 <div class="sidebar">
+
     <div class="logo">KGF<span>Admin</span></div>
 
     <ul>
@@ -23,143 +24,183 @@
     </ul>
 
     <button class="logout-btn" onclick="logout()">Logout</button>
+
 </div>
 
 <div class="main-content">
 
     <div class="topbar">
-        <h1>Dashboard</h1>
+
+        <div>
+            <h1>Dashboard</h1>
+            <p class="topbar-subtitle" id="dashboardDate">Portfolio overview</p>
+        </div>
 
         <div class="admin-profile">
-            <span class="notification-icon">🔔</span>
+            <span class="admin-avatar">AD</span>
             <span>Administrator</span>
         </div>
+
     </div>
 
     <div class="stats-grid">
 
         <div class="stat-card">
-            <h3>Total Investors</h3>
+            <div class="stat-top">
+                <h3>Total Investors</h3>
+                <div class="stat-icon brand">◉</div>
+            </div>
             <p>1,248</p>
-            <span>Registered investors</span>
+            <div class="stat-footer">
+                <span class="delta up">▲ 6.2%</span>
+                <span>vs last quarter</span>
+            </div>
         </div>
 
         <div class="stat-card">
-            <h3>Total Investment</h3>
-            <p>NRs 8.4M</p>
-            <span>Current investment</span>
+            <div class="stat-top">
+                <h3>Assets Under Management</h3>
+                <div class="stat-icon success">₨</div>
+            </div>
+            <p>NRs 84.2M</p>
+            <div class="stat-footer">
+                <span class="delta up">▲ 9.4%</span>
+                <span>year to date</span>
+            </div>
         </div>
 
         <div class="stat-card">
-            <h3>Pending Requests</h3>
-            <p>24</p>
-            <span>Need attention</span>
+            <div class="stat-top">
+                <h3>Pending Requests</h3>
+                <div class="stat-icon warning">◷</div>
+            </div>
+            <p id="kpiPending">0</p>
+            <div class="stat-footer">
+                <span class="delta down">▼ Awaiting action</span>
+                <span>approval required</span>
+            </div>
         </div>
 
         <div class="stat-card">
-            <h3>Open Complaints</h3>
-            <p>8</p>
-            <span>Customer issues</span>
+            <div class="stat-top">
+                <h3>Open Complaints</h3>
+                <div class="stat-icon danger">!</div>
+            </div>
+            <p id="kpiComplaints">0</p>
+            <div class="stat-footer">
+                <span class="delta flat">● Stable</span>
+                <span>across all channels</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="two-column">
+
+        <div class="content-card chart-panel">
+
+            <div class="card-header">
+                <h2>Investment Growth</h2>
+
+                <div class="chart-legend">
+                    <span class="legend-item">
+                        <span class="legend-swatch" style="background:#2563eb"></span>
+                        Cumulative AUM
+                    </span>
+                </div>
+            </div>
+
+            <div class="chart-wrap" id="growthChart">
+                <div class="chart-tooltip" id="growthTooltip"></div>
+            </div>
+
+            <div class="chart-summary">
+                <div class="chart-summary-item">
+                    <span>Quarterly inflow</span>
+                    <strong>NRs 11.4M</strong>
+                </div>
+                <div class="chart-summary-item">
+                    <span>Quarterly outflow</span>
+                    <strong>NRs 4.1M</strong>
+                </div>
+                <div class="chart-summary-item">
+                    <span>Net growth</span>
+                    <strong style="color:var(--success-700)">+NRs 7.3M</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-card">
+
+            <div class="card-header">
+                <h2>Portfolio Allocation</h2>
+                <a href="investors.html" class="small-link">View Investors</a>
+            </div>
+
+            <div class="allocation-layout" id="allocationChart"></div>
+
+        </div>
+
+    </div>
+
+    <div class="two-column equal">
+
+        <div class="content-card">
+
+            <div class="card-header">
+                <h2>Pending Requests</h2>
+                <a href="transactions.html" class="small-link">Review All</a>
+            </div>
+
+            <div id="pendingRequests"></div>
+
+        </div>
+
+        <div class="content-card">
+
+            <div class="card-header">
+                <h2>Recent Activity</h2>
+            </div>
+
+            <div id="recentActivity"></div>
+
         </div>
 
     </div>
 
     <div class="content-card">
+
         <div class="card-header">
-            <h2>Investment Overview</h2>
+            <h2>Latest Transactions</h2>
+            <a href="transactions.html" class="small-link">View All</a>
         </div>
 
-        <div class="chart">
-
-            <div class="bar" style="height: 45%;">
-                <span>Jan</span>
-            </div>
-
-            <div class="bar" style="height: 60%;">
-                <span>Feb</span>
-            </div>
-
-            <div class="bar" style="height: 52%;">
-                <span>Mar</span>
-            </div>
-
-            <div class="bar" style="height: 75%;">
-                <span>Apr</span>
-            </div>
-
-            <div class="bar" style="height: 68%;">
-                <span>May</span>
-            </div>
-
-            <div class="bar" style="height: 90%;">
-                <span>Jun</span>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="two-column">
-
-        <div class="content-card">
-            <div class="card-header">
-                <h2>Recent Activity</h2>
-            </div>
-
-            <div class="activity">
-                <p><strong>INV-1003</strong> submitted an investment request.</p>
-                <small>10 minutes ago</small>
-            </div>
-
-            <div class="activity">
-                <p><strong>COMP-001</strong> complaint received.</p>
-                <small>30 minutes ago</small>
-            </div>
-
-            <div class="activity">
-                <p><strong>REQ-002</strong> transaction waiting for approval.</p>
-                <small>1 hour ago</small>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <div class="card-header">
-                <h2>Recent Transactions</h2>
-                <a href="transactions.html" class="small-link">View All</a>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Request ID</th>
-                        <th>Investor</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>REQ-001</td>
-                        <td>INV-1003</td>
-                        <td>NRs 100,000</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-
-                    <tr>
-                        <td>REQ-002</td>
-                        <td>INV-1008</td>
-                        <td>NRs 300,000</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Investor</th>
+                    <th>Type</th>
+                    <th class="amount">Amount</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="latestTransactions"></tbody>
+        </table>
 
     </div>
 
 </div>
 
-<script src="script.js"></script>
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/investors.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/complaints.js"></script>
+<script src="js/messages.js"></script>
 
 </body>
 </html>
