@@ -1,0 +1,248 @@
+/* KGF ADMIN - DASHBOARD */
+
+/* DASHBOARD LAYOUT */
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 25px;
+}
+
+.two-column.equal {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* CHART */
+
+.chart-panel .card-header {
+    margin-bottom: 8px;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.chart-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.chart-wrap svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.chart-grid-line {
+    stroke: var(--slate-200);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+.chart-axis-label {
+    fill: var(--text-soft);
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+}
+
+.chart-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--slate-900);
+    color: white;
+    padding: 8px 11px;
+    border-radius: var(--radius-sm);
+    font-size: 12.5px;
+    line-height: 1.45;
+    transform: translate(-50%, -115%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 5;
+    box-shadow: var(--shadow-lg);
+}
+
+.chart-tooltip.visible {
+    opacity: 1;
+}
+
+.chart-tooltip strong {
+    display: block;
+    font-size: 13px;
+}
+
+.chart-summary {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--slate-100);
+}
+
+.chart-summary-item span {
+    display: block;
+    color: var(--text-soft);
+    font-size: 12.5px;
+    margin-bottom: 3px;
+}
+
+.chart-summary-item strong {
+    font-size: 17px;
+    letter-spacing: -0.3px;
+}
+
+/* ALLOCATION */
+
+.allocation-layout {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.donut-wrap {
+    position: relative;
+    width: 168px;
+    height: 168px;
+    flex-shrink: 0;
+}
+
+.donut-wrap svg {
+    transform: rotate(-90deg);
+}
+
+.donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    text-align: center;
+}
+
+.donut-center span {
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.donut-center strong {
+    font-size: 21px;
+    letter-spacing: -0.5px;
+}
+
+.allocation-list {
+    flex: 1;
+    min-width: 190px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.allocation-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.allocation-row .legend-swatch {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.allocation-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+.allocation-bar {
+    width: 74px;
+    height: 6px;
+    background: var(--slate-100);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.allocation-bar i {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+}
+
+.allocation-pct {
+    width: 44px;
+    text-align: right;
+    font-size: 13.5px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+/* PENDING REQUESTS */
+
+.request-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.request-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.request-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.request-main strong {
+    font-size: 14.5px;
+}
+
+.request-main span {
+    display: block;
+    color: var(--text-soft);
+    font-size: 12.5px;
+    margin-top: 3px;
+}
+
+.request-amount {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.request-amount strong {
+    display: block;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+}
+
+.request-amount span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-soft);
+    margin-top: 3px;
+}

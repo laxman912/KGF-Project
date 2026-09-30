@@ -1,0 +1,239 @@
+/* KGF ADMIN - COMPLAINTS */
+
+/* COMPLAINTS */
+
+.summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.filter-select {
+    padding: 11px 14px;
+    border: 1px solid var(--slate-300);
+    border-radius: 7px;
+    background: white;
+    font-size: 14px;
+    color: #1f2937;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: #2563eb;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-chip {
+    background: white;
+    border: 1px solid var(--slate-200);
+    color: var(--slate-600);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.filter-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.filter-chip.active {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: white;
+}
+
+.filter-chip .chip-count {
+    opacity: 0.7;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.result-count {
+    color: var(--slate-400);
+    font-size: 13px;
+}
+
+.complaints-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.complaint-card {
+    --accent: #f59e0b;
+    background: white;
+    border: 1px solid var(--slate-200);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.complaint-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.complaint-card[data-status="Open"] {
+    --accent: #dc2626;
+}
+
+.complaint-card[data-status="In Progress"] {
+    --accent: #2563eb;
+}
+
+.complaint-card[data-status="Resolved"] {
+    --accent: #16a34a;
+}
+
+.complaint-card:hover .avatar {
+    background: var(--accent);
+    color: white;
+}
+
+.complaint-main {
+    flex: 1;
+    padding: 18px 20px;
+}
+
+.complaint-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.complaint-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    background: var(--slate-100);
+    color: var(--slate-500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.avatar.admin {
+    background: #2563eb;
+    color: white;
+}
+
+.complaint-identity h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    overflow-wrap: anywhere;
+}
+
+.complaint-meta {
+    color: var(--slate-400);
+    font-size: 13px;
+}
+
+.complaint-meta strong {
+    color: var(--slate-500);
+}
+
+.complaint-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.badge.high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.badge.medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge.low {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.category-badge {
+    background: var(--slate-100);
+    color: var(--slate-600);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.complaint-detail {
+    color: var(--slate-600);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 14px 0 16px;
+    padding-left: 50px;
+}
+
+.complaint-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 50px;
+}
+
+.ghost-btn {
+    background: white;
+    border: 1px solid var(--slate-300);
+    color: var(--slate-600);
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.ghost-btn:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.ghost-btn.success {
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.ghost-btn.success:hover {
+    background: #dcfce7;
+    border-color: #16a34a;
+    color: #166534;
+}
